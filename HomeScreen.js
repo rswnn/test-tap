@@ -5,6 +5,16 @@ import { TextInput } from 'react-native-gesture-handler';
 
 export class HomeScreen extends Component {
 
+  static navigationOptions = {
+    title: 'Tirta Agro Persada',
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+      color: '#000',
+      textAlign: 'center'
+    },
+  };
+
   state ={
     username: '',
     email: '',
@@ -24,11 +34,15 @@ export class HomeScreen extends Component {
 
   render() {
     return (
-      <View>
+      <View style={{margin: 20,paddingTop: 50}}>
+        <TextInput style={{borderWidth: 1, borderRadius: 10, borderColor: 'gray', marginBottom: 10}} placeholder="username" onChangeText={(text) => this.setState({username: text})}/>
+        <TextInput style={{borderWidth: 1, borderRadius: 10, borderColor: 'gray', marginBottom: 10}} placeholder="email" onChangeText={(text) => this.setState({email: text})}/>
+        <View style={{margin: 10, width: 200, alignSelf: 'center'}}>
         <Button title="Take a photo" onPress={() => this.handleCamera()}/>
-        <TextInput placeholder="username" onChangeText={(text) => this.setState({username: text})}/>
-        <TextInput placeholder="email" onChangeText={(text) => this.setState({email: text})}/>
+        </View>
+        <View style={{ width: 200, alignSelf: 'center'}}>
         <Button title="Input" onPress={() => this.handleInput()}/>
+        </View>
       </View>
     )
   }

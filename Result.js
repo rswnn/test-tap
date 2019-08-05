@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, Image } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage';
-import { Content, Card, CardItem, Left, Body } from 'native-base';
+import { Thumbnail, Content, Card, CardItem, Left, Body, Container } from 'native-base';
 
 export class Result extends Component {
 
@@ -31,13 +31,24 @@ export class Result extends Component {
         const username = navigation.getParam('username')
         const email = navigation.getParam('email')
         return (
-            <View>
-                <View>
-                <Image style={{width: 350, height: 500}} source={{uri: this.state.pic}}/>
-                </View>
-                <Text> {username} </Text>
-                <Text> {email} </Text>
-            </View>
+            <Container>
+        <Content>
+          <Card>
+            <CardItem>
+              <Left>
+                <Thumbnail source={{uri: this.state.pic}} />
+                <Body>
+                  <Text>{username}</Text>
+                  <Text note>{email}</Text>
+                </Body>
+              </Left>
+            </CardItem>
+            <CardItem cardBody>
+              <Image source={{uri: this.state.pic}} style={{height: 200, width: null, flex: 1}}/>
+            </CardItem>
+          </Card>
+        </Content>
+      </Container>
         )
     }
 }
